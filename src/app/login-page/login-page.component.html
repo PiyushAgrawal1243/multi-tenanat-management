@@ -1,0 +1,39 @@
+<section class="text-center text-lg-start">
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Sign In</h2>
+            <form [formGroup]="loginForm">
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example17" >Email address</label>
+                <input formControlName="tenant_email" type="email" id="form2Example17" class="form-control form-control-lg" [ngClass]="{'is-invalid':(loginForm.get('email')?.touched && loginForm.get('email')?.invalid )|| isValid}" />
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example27">Password</label>
+                <input formControlName="password" type="password" id="form2Example27" class="form-control form-control-lg" [ngClass]="{'is-invalid':(loginForm.get('password')?.touched && loginForm.get('password')?.invalid) || isValid}" style=" margin-bottom: 3rem;" />
+                <small class="text-danger" *ngIf="isValid === 'unauthorized'">
+                  Invalid email or password.
+                </small>
+              </div>
+
+              <nash-button transform="uppercase" type="raised" color="primary"  (click)="login()" style="margin-left: -1rem; margin-right: -1rem; margin-bottom: 1.5rem; margin-top: 1.5rem;" >Login</nash-button>
+           
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" class="w-100 rounded-4 shadow-4"
+          alt="" />
+      </div>
+    </div>
+  </div>
+</section>

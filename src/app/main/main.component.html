@@ -1,0 +1,201 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+  <div class="container-fluid" style="font-size: large;">
+    <a class="navbar-brand" href="/home"> <img class="img-logo"
+        src="https://www.nashtechglobal.com/wp-content/uploads/2023/03/nashTech-logo-red.svg" alt="logo" /></a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" (click)="toggleNevbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive" [ngClass]="{ show: nevbarOpen }">
+      <div class="header" style="margin-left: auto">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <!-- <a class="nav-link" href="/home" >Home</a> -->
+            <a routerLink="/home" [ngClass]="{ active: isActiveRoute('/home') }">Home</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="tenant" [ngClass]="{ active: isActiveRoute('/home/tenant') }"
+              [hidden]="auth === 'client'">Tenant Management</a>
+          </li>
+          <li class="nav-item">
+            <!-- <a class="nav-link" href="/home/company" [hidden]="auth !=='client'">Company Management</a> -->
+            <a routerLink="company" [ngClass]="{ active: isActiveRoute('/home/company') }"
+              [hidden]="auth !== 'client'">Company Management
+            </a>
+          </li>
+
+          <li class="nav-item dropdown nav-user" (click)="toggleProfile()">
+            <div class="nav-link nav-user-img" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" style="padding: 0; cursor: pointer">
+              <img src="https://img.icons8.com/dusk/100/000000/user-female-circle.png" alt=""
+                class="user-avatar-md rounded-circle" />
+            </div>
+            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2"
+              [ngClass]="{ show: profileOpen }">
+              <div class="nav-user-info">
+                <h5 class="mb-0 nav-user-name">Hi User</h5>
+                <input type="checkbox" id="toggle_checkbox">
+
+                <label for="toggle_checkbox">
+                  <div id="star">
+                    <div class="star" id="star-1">★</div>
+                    <div class="star" id="star-2">★</div>
+                  </div>
+                  <div id="moon"></div>
+                </label>
+              </div>
+              <ul class="navbar-nav ms-auto" style="flex-direction: column;">
+                <li class="logout-item" (click)="openModal(myLogOutModal)">
+                  <div class="dropdown-item" style="cursor: pointer">
+                    Log out
+                  </div>
+                </li>
+                <li>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ng-template #myLogOutModal>
+    <div class="mt-4 mb-4 p-4 d-flex flex-column justify-content-center align-items-center">
+      <span class="text-bold">Are you sure you want to Log Out</span>
+      <div class="mt-4 d-flex justify-content-between">
+        <nash-button transform="uppercase" type="raised" color="primary" (click)="logOut()"
+          style="margin-right: 2rem">Yes</nash-button>
+        <nash-button transform="uppercase" type="raised" color="secondary" (click)="closeModal()">No</nash-button>
+      </div>
+    </div>
+  </ng-template>
+</nav>
+
+<ng-container *ngIf="isActiveRoute('/home'); else elseTemplate">
+  <section class="light mt-4">
+    <div class="container py-2 mt-6">
+      <div class="h1 text-center text-dark" id="pageHeaderTitle">
+        Multi Tenant Management
+      </div>
+
+      <article class="postcard light blue">
+        <a class="postcard__img_link" href="#">
+          <img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title blue"><a href="#">Title</a></h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2023
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            fugiat asperiores inventore beatae accusamus odit minima enim,
+            commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit
+            corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam
+            adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores
+            nobis enim quidem excepturi, illum quos!
+          </div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+            <li class="tag__item play blue">
+              <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+            </li>
+          </ul>
+        </div>
+      </article>
+      <article class="postcard light red">
+        <a class="postcard__img_link" href="#">
+          <img class="postcard__img" src="https://picsum.photos/501/500" alt="Image Title" />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title red"><a href="#">Title</a></h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2024
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            fugiat asperiores inventore beatae accusamus odit minima enim,
+            commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit
+            corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam
+            adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores
+            nobis enim quidem excepturi, illum quos!
+          </div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+            <li class="tag__item play red">
+              <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+            </li>
+          </ul>
+        </div>
+      </article>
+      <article class="postcard light green">
+        <a class="postcard__img_link" href="#">
+          <img class="postcard__img" src="https://picsum.photos/500/501" alt="Image Title" />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title green"><a href="#">Title</a></h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2025
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            fugiat asperiores inventore beatae accusamus odit minima enim,
+            commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit
+            corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam
+            adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores
+            nobis enim quidem excepturi, illum quos!
+          </div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+            <li class="tag__item play green">
+              <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+            </li>
+          </ul>
+        </div>
+      </article>
+      <article class="postcard light yellow">
+        <a class="postcard__img_link" href="#">
+          <img class="postcard__img" src="https://picsum.photos/501/501" alt="Image Title" />
+        </a>
+        <div class="postcard__text t-dark">
+          <h1 class="postcard__title yellow"><a href="#">Title</a></h1>
+          <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+              <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2026
+            </time>
+          </div>
+          <div class="postcard__bar"></div>
+          <div class="postcard__preview-txt">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi,
+            fugiat asperiores inventore beatae accusamus odit minima enim,
+            commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit
+            corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam
+            adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores
+            nobis enim quidem excepturi, illum quos!
+          </div>
+          <ul class="postcard__tagbox">
+            <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+            <li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+            <li class="tag__item play yellow">
+              <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+</ng-container>
+<ng-template #elseTemplate>
+  <router-outlet></router-outlet>
+</ng-template>
