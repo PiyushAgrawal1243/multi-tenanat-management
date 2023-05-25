@@ -21,6 +21,12 @@ export class LoginPageComponent {
       this.route.navigate(['home'])
     }
   }
+  setTenantEmail(event:any){
+    this.loginForm.get('tenant_email')?.setValue(event?.target.value)
+  }
+  setTenantPassword(event:any){
+    this.loginForm.get('password')?.setValue(event.target.value)
+  }
   login() {
     this.loginService.checkCredentials(this.loginForm?.value)
     this.isValid = localStorage.getItem('auth');

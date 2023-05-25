@@ -11,13 +11,15 @@
             <form [formGroup]="loginForm">
 
               <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example17" >Email address</label>
-                <input formControlName="tenant_email" type="email" id="form2Example17" class="form-control form-control-lg" [ngClass]="{'is-invalid':(loginForm.get('email')?.touched && loginForm.get('email')?.invalid )|| isValid}" />
+                <!-- <label class="form-label" for="form2Example17" >Email address</label>
+                <input formControlName="tenant_email" type="email" id="form2Example17" class="form-control form-control-lg" [ngClass]="{'is-invalid':(loginForm.get('email')?.touched && loginForm.get('email')?.invalid )|| isValid}" /> -->
+                <ntg-textbox label="Email Address" type="email" (input)="setTenantEmail($event)" [ngClass]="{'is-invalid':(loginForm.get('email')?.touched && loginForm.get('email')?.invalid )|| isValid}"></ntg-textbox>
               </div>
 
               <div class="form-outline mb-4">
-                <label class="form-label" for="form2Example27">Password</label>
-                <input formControlName="password" type="password" id="form2Example27" class="form-control form-control-lg" [ngClass]="{'is-invalid':(loginForm.get('password')?.touched && loginForm.get('password')?.invalid) || isValid}" style=" margin-bottom: 3rem;" />
+                <!-- <label class="form-label" for="form2Example27">Password</label>
+                <input formControlName="password" type="password" id="form2Example27" class="form-control form-control-lg" [ngClass]="{'is-invalid':(loginForm.get('password')?.touched && loginForm.get('password')?.invalid) || isValid}" style=" margin-bottom: 3rem;" /> -->
+                <ntg-textbox label="Password" type="password" (input)="setTenantPassword($event)" [ngClass]="{'is-invalid':(loginForm.get('password')?.touched && loginForm.get('password')?.invalid) || isValid}" style=" margin-bottom: 3rem;"></ntg-textbox>
                 <small class="text-danger" *ngIf="isValid === 'unauthorized'">
                   Invalid email or password.
                 </small>
