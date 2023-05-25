@@ -53,4 +53,9 @@ toggleProfile(){
   this.profileOpen = !this.profileOpen;
 }
 
+navigate(page:string): void {
+    this.router.navigate( ['home']);
+}
+
+
 }

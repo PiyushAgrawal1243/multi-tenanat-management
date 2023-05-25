@@ -26,7 +26,7 @@ const routes: Routes = [
       loadChildren: () =>
         loadRemoteModule({
           type: 'module',
-          remoteEntry: 'http://localhost:4201/remoteEntry.js',
+          remoteEntry: 'https://piyushagrawal1243.github.io/tenant-management/remoteEntry.js',
           exposedModule: './tenant-management'
         })
           .then((m: any) => m.AppModule),
@@ -37,7 +37,7 @@ const routes: Routes = [
       component: WebComponentWrapper,
       data: {
         type: 'script',
-        remoteEntry: 'http://localhost:4204/remoteEntry.js',
+        remoteEntry: 'https://piyushagrawal1243.github.io/company-management/remoteEntry.js',
         remoteName: 'react',
         exposedModule: './web-components',
         elementName: 'react-element',

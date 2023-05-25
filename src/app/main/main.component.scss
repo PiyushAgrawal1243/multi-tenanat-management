@@ -6,6 +6,10 @@
    border-radius: 0%;
  }
 
+ a {
+  cursor: pointer;
+ }
+
  .header a {
    color: black;
    text-align: center;
@@ -17,6 +21,7 @@
    margin: 4px 10px 0px 8px;
    height: max-content;
    line-height: 1px;
+   cursor: pointer;
  }
 
 
@@ -37,6 +42,7 @@
    transform: scale(0.8);
    transition: all 0.5s;
    color: white;
+   cursor: pointer;
  }
 
  @media screen and (max-width: 800px) {
@@ -548,7 +554,7 @@ a .dropdown-item:hover{
 
 *
 {
-    user-select: none;  
+    user-select: none;
 }
 
 #toggle_checkbox
